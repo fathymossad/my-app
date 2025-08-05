@@ -1,0 +1,122 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:naming_series",
+ "creation": "2025-08-05 15:09:23.489992",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_zwza",
+  "naming_series",
+  "first_name",
+  "second_name",
+  "third_name",
+  "laste_name",
+  "class",
+  "age",
+  "grad_level",
+  "id",
+  "active",
+  "inf_student"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_zwza",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "First Name",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.grad_level",
+   "fieldname": "class",
+   "fieldtype": "Select",
+   "label": "Class",
+   "options": "A\nB\nC\nD"
+  },
+  {
+   "fieldname": "second_name",
+   "fieldtype": "Data",
+   "label": "Second Name"
+  },
+  {
+   "fieldname": "third_name",
+   "fieldtype": "Data",
+   "label": "Third Name"
+  },
+  {
+   "fieldname": "age",
+   "fieldtype": "Int",
+   "label": "Age",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "grad_level",
+   "fieldtype": "Int",
+   "label": "Grad Level",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "laste_name",
+   "fieldtype": "Data",
+   "label": "Laste Name"
+  },
+  {
+   "fieldname": "id",
+   "fieldtype": "Int",
+   "label": "ID",
+   "non_negative": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "label": "Active"
+  },
+  {
+   "fieldname": "inf_student",
+   "fieldtype": "Table",
+   "label": "Inf Student",
+   "options": "Information Student"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "STU-.YYYY.-"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-08-05 16:41:53.818517",
+ "modified_by": "Administrator",
+ "module": "School_eduction",
+ "name": "Student",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
