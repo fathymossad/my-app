@@ -20,9 +20,10 @@
   },
   {
    "fieldname": "appreciations",
-   "fieldtype": "Data",
+   "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Appreciations",
+   "options": "Excellent\nVery Good\nAverage\nPoor",
    "read_only": 1
   },
   {
@@ -43,7 +44,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-08-05 15:23:00.729996",
+ "modified": "2025-08-09 00:46:52.374759",
  "modified_by": "Administrator",
  "module": "School_eduction",
  "name": "Information Student",
