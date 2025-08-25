@@ -6,10 +6,19 @@ from frappe.model.document import Document
 
 
 class Student(Document):
-	
+
+
 	def validate (self) :
 		self.validate_id()
 		self.validate_grade()
+
+		if self.reference:
+			existing_transfer = frappe.db.exists("Student", {
+				"reference": self.reference,
+				"name": ["!=", self.name]
+		})
+		if existing_transfer:
+			frappe.throw(f"This student has already been transferred before. Reference: {self.reference}")
 
 		frappe.msgprint ("The Full Name is '{0}'".format(
 			(self.first_name or '') + " " + (self.second_name or '') + " " + (self.third_name or '')
@@ -29,7 +38,7 @@ class Student(Document):
 
 			if duplicate:
 				frappe.throw(("Student ID '{0}' is already in use by another student.").format(self.id))
-
+				# frappe.throw(f"Student ID '{self.id}' is already in use by another student.")
     
 
 	def validate_grade(self):
@@ -50,3 +59,18 @@ class Student(Document):
 					row.appreciations = 'Poor'
 				else:
 					row.appreciations = ''
+
+
+	@frappe.whitelist()
+	def create_new_student(self):
+		new_student = frappe.new_doc("Student")
+		new_student.first_name = self.first_name
+		new_student.second_name = self.second_name
+		new_student.full_name = self.full_name
+		new_student.age = self.age
+		new_student.reference = self.name
+		new_student.grad_level = int(self.grad_level) + 1
+		new_student.id = int(self.id) + 1
+		new_student.insert()
+		return new_student
+
